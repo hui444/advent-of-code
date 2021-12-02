@@ -14,10 +14,8 @@ for input in input_list:
         horizontal_position += value
         depth += aim * value
     elif command == 'down':
-        # depth += value
         aim += value
     elif command == 'up':
-        # depth -= value
         aim -= value
     else:
         print('unknown command: ', input)
