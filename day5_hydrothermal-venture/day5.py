@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 input_list = []
 
 f = open("input.txt", "r")
@@ -18,14 +20,11 @@ for i in range(len(input_list)):
         [diff_x, diff_y]
     ])
 
-marked_coordinates = []
-duplicated_coordinates = []
+# Initialize dictionary
+marked_coordinates = defaultdict(int)
     
 def updateCoordinateLists(coordinate):
-    if coordinate in marked_coordinates and coordinate not in duplicated_coordinates:
-        duplicated_coordinates.append(coordinate)
-    else:
-        marked_coordinates.append(coordinate)
+    marked_coordinates[str(coordinate)] += 1
     
 def addCoordinatesToList(coordinates, ignore_diagonals):
     init_coordinate = coordinates[0]
@@ -39,7 +38,6 @@ def addCoordinatesToList(coordinates, ignore_diagonals):
         if ignore_diagonals:
             return
         else:
-            print(movement_x, movement_y)
             for i in range(abs(movement_x) + 1):
                 # m_x > 0
                 if movement_x > 0:
@@ -80,17 +78,27 @@ def addCoordinatesToList(coordinates, ignore_diagonals):
             coordinate = [init_x, y_value]
             updateCoordinateLists(coordinate)
 
-# def part1():
-#     for i in range(len(coordinates_list)):
-#         addCoordinatesToList(coordinates_list[i], True)
-#     print(len(duplicated_coordinates))
+def intercepts_of_vertical_horizontal_lines():
+    duplicated_coordinates = 0
+    for i in range(len(coordinates_list)):
+        addCoordinatesToList(coordinates_list[i], True)
+    for j in marked_coordinates:
+        if marked_coordinates[j] >= 2:
+            duplicated_coordinates += 1
+    return duplicated_coordinates
 
-# part1()
+part1 = intercepts_of_vertical_horizontal_lines()
+print("part1: ", part1)
 
-def part2():
+def intercepts_of_all_lines():
+    duplicated_coordinates = 0
     for i in range(len(coordinates_list)):
         addCoordinatesToList(coordinates_list[i], False)
-        print(i, len(coordinates_list))
-    print(len(duplicated_coordinates))
+    for j in marked_coordinates:
+        if marked_coordinates[j] >= 2:
+            duplicated_coordinates += 1
+    return duplicated_coordinates
 
-part2()
+marked_coordinates = defaultdict(int)
+part2 = intercepts_of_all_lines()
+print("part2: ", part2)
