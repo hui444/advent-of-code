@@ -1,4 +1,4 @@
-from heapq import heappop, heappush, heapify
+from heapq import heappush, heapify
 
 f = open("day1/input.txt", "r")
 f = f.read().split("\n")
