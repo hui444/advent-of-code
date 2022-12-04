@@ -45,3 +45,22 @@ Iterate through the list, find the common letters/'badges' of every 3 rows and s
 
 - Time complexity: O(n)
 - Space complexity: O(1)
+
+# [Day 4](https://adventofcode.com/2022/day/4) - Camp Cleanup
+
+## Part 1: Get number of assignements that are fully contained:
+
+Iterate through the list, get start and end of each range, check if they are fully contained within either ranges
+
+- Time complexity: O(n)
+- Space complexity: O(1)
+
+## Part 2: Get number of overlapping assignments:
+
+Iterate through the list, get start and end of each range.
+Start of overlapping range: Max value between both start values
+End of overlapping range: Min value between both end values
+If the overlapping range is invalid (start > end), there is no overlap between the 2 ranges
+
+- Time complexity: O(n)
+- Space complexity: O(1)
