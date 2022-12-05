@@ -64,3 +64,26 @@ If the overlapping range is invalid (start > end), there is no overlap between t
 
 - Time complexity: O(n)
 - Space complexity: O(1)
+
+# [Day 5](https://adventofcode.com/2022/day/5) - Supply Stacks
+
+## Part 1: Get string of top crates after movement (using FIFO):
+
+Parse input by splitting into:
+
+1. Arrangements ("[H] [Z] [H] [H] [W] [S] [M]")
+   1. Last row gives the number of stacks we have (" 1 2 3 4 5 6 7 8 9 ")
+1. Movements ("move 15 from 2 to 4")
+   And transforming arrangement into a dictionary of lists containing the crates, movements into a list of [number_of_stacks_to_move, source_stack, destination_stack]
+
+Then, run the movement algorithm on the dictionary, each time taking the list of crates_to_move and reversing it to mimic FIFO before appending it to the destination_stack
+
+- Time complexity: O(number of moves \* tallest stack height + tallest stack height \* number of stacks)
+- Space complexity: O(number of crates + number of moves)
+
+## Part 2: Get string of top crates after movement (by moving in batches):
+
+Same as Part 1, but movement of crates are in batches, so we do not need to reverse the crates_to_move
+
+- Time complexity: O(number of moves \* tallest stack height + tallest stack height \* number of stacks)
+- Space complexity: O(number of crates + number of moves)
