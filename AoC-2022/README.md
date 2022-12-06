@@ -87,3 +87,21 @@ Same as Part 1, but movement of crates are in batches, so we do not need to reve
 
 - Time complexity: O(number of moves \* tallest stack height + tallest stack height \* number of stacks)
 - Space complexity: O(number of crates + number of moves)
+
+# [Day 6](https://adventofcode.com/2022/day/6) - Tuning Trouble
+
+## Part 1: Get position of start of packet after marker (4 distinct characters):
+
+Maintain a dictionary with the character as key and index as value. Update the dictionary for every character while checking if the letter exists in the dictionary and has an index >= start of marker. This means that we have to move the start of marker since the marker consists of 4 distinct characters.
+
+Once the current index - start of marker index = 4, we found the start of packet
+
+- Time complexity: O(length of string)
+- Space complexity: O(1) - since we keep a dictionary of at most 26 alphabets
+
+## Part 2: Get position of start of message after marker (14 distinct characters):
+
+Same as Part 1, but number of distinct characters = 14 instead of 4
+
+- Time complexity: O(length of string)
+- Space complexity: O(1)
