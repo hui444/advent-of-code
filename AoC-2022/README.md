@@ -105,3 +105,29 @@ Same as Part 1, but number of distinct characters = 14 instead of 4
 
 - Time complexity: O(length of string)
 - Space complexity: O(1)
+
+# [Day 7](https://adventofcode.com/2022/day/7) - No Space Left On Device
+
+## Part 1: Get sum of directories with sizes <= 100000:
+
+Get size of directory by maintaining a dictionary of absolute path as key and directory size as value and an list to keep track of the directories that we move into (eg [root, root/a, root/a/b] -> dir b is in dir a and dir root contains dir a and dir b)
+
+1. command starts with `$ cd `
+   1. next text is `..`: move out of directory
+   1. next text is `/`: move to root directory
+   1. else: move into new directory and add this to the list of directories we have
+1. command starts with a digit -> size of a file in the directory
+   since the file exists in the directory and all directories contained by the parent, we have to add this file size to the appropriate directory sizes
+1. command starts with `$ ls` or `dir` -> ignore since it does not affect directory sizes
+
+Get all sizes of directories in dictionary and sum the values <= 100000.
+
+- Time complexity: O(number of lines \* number of directories)
+- Space complexity: O(number of directories)
+
+## Part 2: Get smallest directory size to delete to free up device for update:
+
+Get dictionary sizes and iterate through the sizes to find the smallest size directory that is >= size to free up to update device.
+
+- Time complexity: O(number of lines \* number of directories)
+- Space complexity: O(number of directories)
