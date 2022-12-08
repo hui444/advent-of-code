@@ -131,3 +131,19 @@ Get dictionary sizes and iterate through the sizes to find the smallest size dir
 
 - Time complexity: O(number of lines \* number of directories)
 - Space complexity: O(number of directories)
+
+# [Day 8](https://adventofcode.com/2022/day/8) - Treetop Tree House
+
+## Part 1: Get number of trees visible from edge of forest:
+
+For each tree in forest, iterate through the directions to see if it is visible from the edge and count it if it is visible. The tree is visible if there exist no tree with height greater than itself.
+
+- Time complexity: O(number of trees \* max(number of row, number of columns))
+- Space complexity: O(1)
+
+## Part 2: Get maximum scenic score of trees in the forest:
+
+For each tree in forest, iterate through the directions and count the number of trees in view and calculate the scenic score. A tree is in view if there exist no tree between it and the view point tree that is taller than the view point tree height. From the tree's scenic score, we can keep track of the maximum scenic score of the trees in the forest
+
+- Time complexity: O(number of trees \* max(number of row, number of columns))
+- Space complexity: O(1)
