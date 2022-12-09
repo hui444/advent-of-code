@@ -147,3 +147,21 @@ For each tree in forest, iterate through the directions and count the number of 
 
 - Time complexity: O(number of trees \* max(number of row, number of columns))
 - Space complexity: O(1)
+
+# [Day 9](https://adventofcode.com/2022/day/9) - Rope Bridge
+
+## Part 1: Get number of distinct positions visited by tail knot:
+
+Move head knot based on instructions and move tail knot to fulfill the conditions. Then add the new tail knot position into the visited set to find the number of distinct positions visited.
+
+To find the new position of the tail knot, we find the distance between itself and the head knot and shift the x and y coordinate by at most 1 towards the head knot coordinate.
+
+- Time complexity: O(number of moves by head knot)
+- Space complexity: O(number of positions visited by tail knot)
+
+## Part 2: Get number of distinct positions visited by last knot in rope (knot 9):
+
+Move head knot based on instructions and move the subsequent knots based on its preceeding knot, to fulfill the conditions. Then add the new knot 9 position into the visited set to find the number of distinct positions visited.
+
+- Time complexity: O(number of moves by head knot)
+- Space complexity: O(number of positions visited by last knot)
