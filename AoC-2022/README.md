@@ -165,3 +165,19 @@ Move head knot based on instructions and move the subsequent knots based on its 
 
 - Time complexity: O(number of moves by head knot)
 - Space complexity: O(number of positions visited by last knot)
+
+# [Day 10](https://adventofcode.com/2022/day/10) - Cathode Ray Tube
+
+## Part 1: Get sum of signal strength during specific cycles:
+
+For "noop" operations, we increment the number of cycles and update the X value. For "addx V" operations, we will increment the number of cycles by 2 and only update the value of X during the second cycle. While updating X, when the number of cycles correspond to 20, 60, 100, 140, 180 or 220, we will calculate the signal strength and update the sum accordingly.
+
+- Time complexity: O(n)
+- Space complexity: O(1)
+
+## Part 2: Get letters displayed on CRT:
+
+Maintain CRT window starting point, the x coordinate of the pixel can be derived from `(num_cycle - 1) // CRT_WIDTH` and the y coordinate from `(num_cycle - 1) % CRT_WIDTH`. And we can get the pixel based on whether the pixel is in the CRT window. Each cycle updates the CRT window based on X.
+
+- Time complexity: O(n)
+- Space complexity: O(1) - space required is constant since CRT will always be 40 by 6
