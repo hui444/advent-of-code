@@ -1,4 +1,4 @@
-from collections import defaultdict, deque 
+from collections import defaultdict 
 
 f = open("day5/input.txt", "r")
 f = f.read().split("\n")
